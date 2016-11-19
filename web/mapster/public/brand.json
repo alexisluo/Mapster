@@ -1,0 +1,9 @@
+{
+  "name": "sum",
+  "children":[
+    {"name":"Apple","income":10},
+    {"name":"Samsung","income":5},
+    {"name":"Xiaomi","income":5},
+    {"name":"Huawei","income":5}
+  ]
+}

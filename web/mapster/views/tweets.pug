@@ -1,0 +1,41 @@
+extends layout
+
+block content
+	.container
+		.row
+			h1.page-title Real-Time Tweets
+
+	.container
+		table.table-striped.table-hover.col-md-12
+			tr
+				th.info.text-center.col-md-2 name
+				th.info.text-center.col-md-6 text
+				th.info.text-center.col-md-4 time
+
+			each val in tweets
+				tr
+					td.text-center #{val.name}
+					td.text-center #{val.text}	
+					td.text-center #{val.created_at}
+
+	script.
+		/*
+		$.ajax({
+			type: "POST",
+			url: "your url",
+			dataType:'json',
+			data: "email="+$('.email').val()+"&pwd="+$('.pwd').val(),
+			success:function(msg){...}
+		});
+		*/
+
+		function refresh() 
+		{ 
+			//window.location.reload(); 
+		}
+
+		setTimeout('refresh()',2000);
+
+
+
+

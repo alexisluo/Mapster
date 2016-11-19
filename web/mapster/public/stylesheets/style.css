@@ -1,0 +1,80 @@
+body {
+  padding: 50px;
+  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+}
+
+body {
+	margin:0px;
+	padding: 0px;
+	/*font-family: "Helvetica Neue",Helvetica,Arial;
+	font-color: rgba(0,0,0);*/
+}
+
+/* layout */
+.nav-bar {
+	background-color: #222;
+	border-color: #080808;;
+	margin: 0px;
+	padding 0px;
+	top:0px;
+}
+
+.title {
+	font-size: 20px;
+	font-family: "Helvetica Neue",Helvetica,Arial;
+	color: #ffffff;
+	margin:5px;
+}
+
+.nav-item {
+	font-size: 14px;
+	font-family: "Helvetica Neue",Helvetica,Arial;
+	color: #ffffff;
+}
+
+/* svg settings */
+svg {
+	margin:0px;
+	padding:0px;
+}
+
+.bubble-title {
+	font-size: 14px;
+	font-family: "Helvetica Neue",Helvetica,Arial;
+	fill: #ffffff;
+}
+
+/* page */
+.page-title {
+	font-size: 30px;
+	font-family: "Helvetica Neue",Helvetica,Arial;
+	color: #000000;
+	border-bottom: 1px solid #eee
+}
+
+table th {
+	padding:5px;
+	font-family: "Helvetica Neue",Helvetica,Arial;
+	font-size: 18px;
+}
+
+table td {
+	padding:5px;
+	font-family: "Helvetica Neue",Helvetica,Arial;
+	font-size: 14px;
+}
+
+/* others */
+a {
+  color: #00B7FF;
+}
+
+.node {
+  stroke: #fff;
+  stroke-width: 1.5px;
+}
+
+.link {
+  stroke: #999;
+  stroke-opacity: .6;
+}

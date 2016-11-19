@@ -1,0 +1,63 @@
+extends layout
+
+block content
+	.container#svg-container
+		svg
+
+	script(src='http://d3js.org/d3.v4.min.js')
+	script. 	
+		function svgHeight() {
+			return 500;
+		}
+
+		function svgWidth() {
+			var parent = document.getElementById("svg-container");
+			return parent.offsetWidth;
+		}
+
+		var bubbleJson = !{JSON.stringify(bubble)};
+		var bubbles = JSON.parse(bubbleJson);
+
+		var width = svgWidth();
+		var height = svgHeight();
+		var svg = d3.select("svg")
+		    .attr("width", width)
+		    .attr("height", height);
+
+		var g = svg.append("g").attr("transform", "translate(2,2)"),
+			format = d3.format(",d");
+
+		var color = d3.scaleOrdinal(d3.schemeCategory20c);
+		//var color = d3.scale.category20();
+
+		// D3 Bubble Chart 
+		var pack = d3.pack()
+				.size([width, height])
+				.padding(3);
+
+		var root = d3.hierarchy(bubbles)
+					.sum(function(d) { return d.income; })
+					.sort(function(a, b) { return b.value - a.value; });
+
+		var rRange = d3.scaleLinear();
+		//rRange.domain(d3.extent(root, function(d){console.log(d.income); return d.income }))
+		rRange.domain([0,15])
+			.range([0, width/8]);
+
+		var node = g.selectAll(".node")
+					.data(pack(root).descendants())
+					.enter().append("g")
+					.attr("transform", function(d) { return "translate(" + d.x + "," + d.y + ")"; })
+
+		node.filter(function(d) { return !d.children; })
+			.append("circle")
+			.attr("r", function(d) { return rRange(d.value); })
+			.style("fill", function(d) { return color(d.data.name); })
+
+		node.filter(function(d) { return !d.children; })
+			.append("text")
+			.attr("class", "bubble-title")
+			.attr("text-anchor", "middle")
+			.attr("dy", "0.3em")
+			.text(function(d) { return d.data.name;  });
+
